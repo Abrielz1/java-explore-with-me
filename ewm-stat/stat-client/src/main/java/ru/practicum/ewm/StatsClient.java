@@ -1,17 +1,16 @@
 package ru.practicum.ewm;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.http.ResponseEntity;
+import ru.practicum.ewm.dto.EndpointHitDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.client.WebClient;
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
-import ru.practicum.ewm.dto.EndpointHitDto;
-
+import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 
 @Slf4j
