@@ -3,6 +3,7 @@ package ru.practicum.ewm;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
 import io.netty.handler.timeout.WriteTimeoutHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import org.springframework.context.annotation.Bean;
@@ -13,19 +14,23 @@ import java.time.Duration;
 
 @Configuration
 public class WebClientConfig {
-    private static final String BASE_URL = "https://localhost:9090";
-    private static final int TIMEOUT = 5000;
+
+    @Value("$stat.url")
+    private String url;
+
+    @Value("$timeout.size")
+    private int timeout;
 
     @Bean
     public WebClient webClientWithTimeout() {
         final HttpClient httpClient = HttpClient.create()
-                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, TIMEOUT)
-                .responseTimeout(Duration.ofMillis(TIMEOUT))
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout)
+                .responseTimeout(Duration.ofMillis(timeout))
                 .doOnConnected(conn ->
-                        conn.addHandlerLast(new ReadTimeoutHandler(TIMEOUT, TimeUnit.MILLISECONDS))
-                                .addHandlerLast(new WriteTimeoutHandler(TIMEOUT, TimeUnit.MILLISECONDS)));
+                        conn.addHandlerLast(new ReadTimeoutHandler(timeout, TimeUnit.MILLISECONDS))
+                                .addHandlerLast(new WriteTimeoutHandler(timeout, TimeUnit.MILLISECONDS)));
         return WebClient.builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(url)
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .build();
     }

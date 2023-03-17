@@ -10,7 +10,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <name>Explore With Me</name>
+    <description>Explore With Me</description>
+
     <modules>
         <module>ewm-stat</module>
         <module>ewm-main</module>
