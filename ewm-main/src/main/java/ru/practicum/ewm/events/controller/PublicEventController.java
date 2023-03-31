@@ -21,16 +21,17 @@ public class PublicEventController {
     private final PublicEventService publicEventService;
 
     @GetMapping
-    public List<ShortEventDto> findEvents(@RequestParam(required = false) String text,
-                                          @RequestParam(required = false) List<Long> categories,
-                                          @RequestParam(required = false) Boolean paid,
-                                          @RequestParam(required = false) String rangeStart,
-                                          @RequestParam(required = false) String rangeEnd,
-                                          @RequestParam(defaultValue = "false") Boolean onlyAvailable,
-                                          @RequestParam(required = false) String sort,
-                                          @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
-                                          @Positive @RequestParam(defaultValue = "10") Integer size,
-                                          HttpServletRequest request) {
+    public List<ShortEventDto> findEvents(
+              @RequestParam(required = false) String text,
+              @RequestParam(required = false) List<Long> categories,
+              @RequestParam(required = false) Boolean paid,
+              @RequestParam(required = false) String rangeStart,
+              @RequestParam(required = false) String rangeEnd,
+              @RequestParam(defaultValue = "false") Boolean onlyAvailable,
+              @RequestParam(required = false) String sort,
+              @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
+              @Positive @RequestParam(defaultValue = "10") Integer size,
+              HttpServletRequest request) {
         PageRequest pageable = PageRequest.of(from / size, size);
         return publicEventService.findEvents(text, categories, paid, rangeStart, rangeEnd,
                 onlyAvailable, sort, pageable, request);

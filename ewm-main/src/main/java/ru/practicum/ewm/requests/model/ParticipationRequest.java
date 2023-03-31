@@ -1,15 +1,14 @@
 package ru.practicum.ewm.requests.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import ru.practicum.ewm.events.model.Event;
 import ru.practicum.ewm.requests.dto.RequestStatus;
+import ru.practicum.ewm.events.model.Event;
 import ru.practicum.ewm.user.model.User;
-
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -18,6 +17,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "requests")
 public class ParticipationRequest {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

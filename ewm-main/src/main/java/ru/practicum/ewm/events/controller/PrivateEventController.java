@@ -1,19 +1,18 @@
 package ru.practicum.ewm.events.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.events.dto.*;
 import ru.practicum.ewm.events.service.PrivateEventService;
-import ru.practicum.ewm.requests.dto.RequestDto;
-import ru.practicum.ewm.requests.dto.RequestUpdateDto;
 import ru.practicum.ewm.requests.service.RequestsService;
-
-import javax.validation.Valid;
-import javax.validation.constraints.Positive;
+import ru.practicum.ewm.requests.dto.RequestUpdateDto;
 import javax.validation.constraints.PositiveOrZero;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
+import ru.practicum.ewm.requests.dto.RequestDto;
+import javax.validation.constraints.Positive;
+import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
+import ru.practicum.ewm.events.dto.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @Validated
@@ -22,12 +21,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PrivateEventController {
     private final PrivateEventService privateEventService;
+
     private final RequestsService requestsService;
 
     @GetMapping
-    public List<ShortEventDto> getEventsByCreator(@Positive @PathVariable Long userId,
-                                                  @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
-                                                  @Positive @RequestParam(defaultValue = "10") Integer size) {
+    public List<ShortEventDto> getEventsByCreator(
+            @Positive @PathVariable Long userId,
+            @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
+            @Positive @RequestParam(defaultValue = "10") Integer size) {
         PageRequest pageable = PageRequest.of(from / size, size);
         return privateEventService.getEventsByCreator(userId, pageable);
     }
@@ -59,9 +60,10 @@ public class PrivateEventController {
     }
 
     @PatchMapping("/{eventId}/requests")
-    public RequestUpdateDto requestProcessing(@Positive @PathVariable Long userId,
-                                              @Positive @PathVariable Long eventId,
-                                              @Valid @RequestBody EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest) {
+    public RequestUpdateDto requestProcessing(
+            @Positive @PathVariable Long userId,
+            @Positive @PathVariable Long eventId,
+            @Valid @RequestBody EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest) {
         return requestsService.requestProcessing(userId, eventId, eventRequestStatusUpdateRequest);
     }
 }

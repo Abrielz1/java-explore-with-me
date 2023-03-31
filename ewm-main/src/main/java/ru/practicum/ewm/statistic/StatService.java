@@ -1,13 +1,12 @@
 package ru.practicum.ewm.statistic;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.StatsClient;
 import ru.practicum.ewm.dto.EndpointHitDto;
-
+import lombok.RequiredArgsConstructor;
+import ru.practicum.ewm.StatsClient;
+import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 
 @Slf4j

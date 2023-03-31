@@ -1,44 +1,49 @@
 package ru.practicum.ewm.events.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.categories.model.Category;
 import ru.practicum.ewm.categories.repository.CategoryRepository;
-import ru.practicum.ewm.events.dto.*;
-import ru.practicum.ewm.events.mapper.EventMapper;
-import ru.practicum.ewm.events.model.Event;
-import ru.practicum.ewm.events.repository.EventRepository;
-import ru.practicum.ewm.events.util.EventUtil;
-import ru.practicum.ewm.exception.ConflictException;
-import ru.practicum.ewm.exception.ObjectNotFoundException;
-import ru.practicum.ewm.location.model.Location;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.location.repository.LocationRepository;
-import ru.practicum.ewm.requests.dto.RequestStatus;
 import ru.practicum.ewm.requests.repository.RequestsRepository;
-import ru.practicum.ewm.statistic.StatService;
-import ru.practicum.ewm.user.model.User;
 import ru.practicum.ewm.user.repository.AdminUserRepository;
-
-import java.time.LocalDateTime;
+import ru.practicum.ewm.exception.ObjectNotFoundException;
+import ru.practicum.ewm.events.repository.EventRepository;
+import ru.practicum.ewm.exception.ConflictException;
+import ru.practicum.ewm.requests.dto.RequestStatus;
+import org.springframework.data.domain.PageRequest;
+import ru.practicum.ewm.categories.model.Category;
+import ru.practicum.ewm.events.mapper.EventMapper;
+import ru.practicum.ewm.location.model.Location;
+import ru.practicum.ewm.events.util.EventUtil;
+import ru.practicum.ewm.statistic.StatService;
+import org.springframework.stereotype.Service;
+import ru.practicum.ewm.events.model.Event;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import ru.practicum.ewm.user.model.User;
+import lombok.RequiredArgsConstructor;
+import ru.practicum.ewm.events.dto.*;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.List;
 
 @Service
 @Slf4j
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class PrivateEventService {
+
     private final RequestsRepository requestsRepository;
+
     private final LocationRepository locationRepository;
+
     private final EventRepository eventRepository;
+
     private final AdminUserRepository adminUserRepository;
+
     private final CategoryRepository categoryRepository;
+
     private final StatService statService;
 
     @Transactional

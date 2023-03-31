@@ -1,16 +1,15 @@
 package ru.practicum.ewm.user.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.user.dto.UserDto;
 import ru.practicum.ewm.user.service.AdminUserService;
-
-import javax.validation.Valid;
-import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
+import javax.validation.constraints.Positive;
+import org.springframework.http.HttpStatus;
+import ru.practicum.ewm.user.dto.UserDto;
+import lombok.RequiredArgsConstructor;
+import javax.validation.Valid;
 import java.util.List;
 
 @Validated
@@ -18,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin/users")
 public class AdminUserController {
+
     private final AdminUserService adminUserService;
 
     @GetMapping

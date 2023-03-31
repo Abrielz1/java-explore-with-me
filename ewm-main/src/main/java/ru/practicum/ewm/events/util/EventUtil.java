@@ -1,23 +1,25 @@
 package ru.practicum.ewm.events.util;
 
+import ru.practicum.ewm.requests.repository.RequestsRepository;
+import ru.practicum.ewm.requests.model.ParticipationRequest;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.format.DateTimeParseException;
+import ru.practicum.ewm.statistic.StatService;
+import ru.practicum.ewm.events.model.Event;
+import java.time.format.DateTimeFormatter;
 import ru.practicum.ewm.dto.ViewStatsDto;
 import ru.practicum.ewm.events.dto.*;
-import ru.practicum.ewm.events.model.Event;
-import ru.practicum.ewm.requests.model.ParticipationRequest;
-import ru.practicum.ewm.requests.repository.RequestsRepository;
-import ru.practicum.ewm.statistic.StatService;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.*;
 import java.util.stream.Collectors;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class EventUtil {
+
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     public static final LocalDateTime MAX_TIME = toTime("5000-01-01 00:00:00");
+
     public static final LocalDateTime MIN_TIME = toTime("2000-01-01 00:00:00");
 
     public static List<FullEventDto> getViews(List<FullEventDto> eventDtos, StatService statService) {

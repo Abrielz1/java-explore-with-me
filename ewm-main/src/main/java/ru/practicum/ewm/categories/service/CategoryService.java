@@ -1,25 +1,25 @@
 package ru.practicum.ewm.categories.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import ru.practicum.ewm.categories.repository.CategoryRepository;
+import org.springframework.transaction.annotation.Transactional;
+import ru.practicum.ewm.exception.ObjectNotFoundException;
+import ru.practicum.ewm.categories.mapper.CategoryMapper;
+import ru.practicum.ewm.exception.ConflictException;
+import ru.practicum.ewm.categories.dto.CategoryDto;
+import ru.practicum.ewm.categories.model.Category;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.categories.dto.CategoryDto;
-import ru.practicum.ewm.categories.mapper.CategoryMapper;
-import ru.practicum.ewm.categories.model.Category;
-import ru.practicum.ewm.categories.repository.CategoryRepository;
-import ru.practicum.ewm.exception.ConflictException;
-import ru.practicum.ewm.exception.ObjectNotFoundException;
-
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 @Service
 @Slf4j
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class CategoryService {
+
     private final CategoryRepository categoryRepository;
 
     @Transactional

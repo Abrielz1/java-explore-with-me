@@ -1,11 +1,10 @@
 package ru.practicum.ewm.location.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -14,9 +13,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "location")
 public class Location {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Float lat;
+
     private Float lon;
 }

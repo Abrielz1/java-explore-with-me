@@ -1,20 +1,20 @@
 package ru.practicum.ewm.categories.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.categories.dto.CategoryDto;
 import ru.practicum.ewm.categories.service.CategoryService;
-
-import javax.validation.Valid;
+import ru.practicum.ewm.categories.dto.CategoryDto;
+import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Positive;
+import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
+import javax.validation.Valid;
 
 @Validated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/admin/categories")
 public class AdminCategoryController {
+
     private final CategoryService categoryService;
 
     @PostMapping

@@ -1,24 +1,24 @@
 package ru.practicum.ewm.events.repository;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
-import ru.practicum.ewm.events.dto.EventState;
-import ru.practicum.ewm.events.model.Event;
-
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import org.springframework.stereotype.Repository;
 import javax.persistence.criteria.CriteriaQuery;
+import ru.practicum.ewm.events.dto.EventState;
 import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.time.LocalDateTime;
+import ru.practicum.ewm.events.model.Event;
 import java.time.format.DateTimeFormatter;
+import javax.persistence.criteria.Root;
+import javax.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
+import javax.persistence.TypedQuery;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
 public class CriteriaEventRepository {
+
     private final EntityManager entityManager;
 
     public List<Event> findEvents(List<Long> users, List<EventState> states, List<Long> categories,

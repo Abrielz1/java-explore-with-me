@@ -1,14 +1,13 @@
 package ru.practicum.ewm.categories.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.categories.dto.CategoryDto;
 import ru.practicum.ewm.categories.service.CategoryService;
-
-import javax.validation.constraints.Positive;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.data.domain.PageRequest;
+import ru.practicum.ewm.categories.dto.CategoryDto;
 import javax.validation.constraints.PositiveOrZero;
+import org.springframework.web.bind.annotation.*;
+import javax.validation.constraints.Positive;
+import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @Validated
@@ -16,11 +15,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/categories")
 public class PublicCategoryController {
+
     private final CategoryService categoryService;
 
     @GetMapping
-    public List<CategoryDto> findAll(@PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
-                                     @Positive @RequestParam(defaultValue = "10") Integer size) {
+    public List<CategoryDto> findAll(
+            @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
+            @Positive @RequestParam(defaultValue = "10") Integer size) {
         PageRequest pageable = PageRequest.of(from / size, size);
         return categoryService.findAll(pageable);
     }

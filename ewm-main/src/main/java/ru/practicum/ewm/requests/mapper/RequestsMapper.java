@@ -1,10 +1,10 @@
 package ru.practicum.ewm.requests.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
-import ru.practicum.ewm.requests.dto.RequestDto;
 import ru.practicum.ewm.requests.model.ParticipationRequest;
+import ru.practicum.ewm.requests.dto.RequestDto;
+import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mapper;
 
 @Mapper
 public interface RequestsMapper {
