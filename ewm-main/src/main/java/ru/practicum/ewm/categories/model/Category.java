@@ -1,30 +1,22 @@
-package ru.practicum.ewm.model;
+package ru.practicum.ewm.categories.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "hits")
-public class EndpointHit {
+@Table(name = "categories")
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String app;
-
-    private String uri;
-
-    private String ip;
-
-    private LocalDateTime timestamp;
+    private String name;
 }
