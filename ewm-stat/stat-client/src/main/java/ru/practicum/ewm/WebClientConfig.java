@@ -14,23 +14,18 @@ import java.time.Duration;
 
 @Configuration
 public class WebClientConfig {
-
-    @Value("$stat.url")
-    private String url;
-
-    @Value("$timeout.size")
-    private int timeout;
+    private static final int TIMEOUT = 5000;
 
     @Bean
-    public WebClient webClientWithTimeout() {
+    public WebClient webClientWithTimeout(@ Value ("${stats-server.url}") String serverUrl) {
         final HttpClient httpClient = HttpClient.create()
-                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout)
-                .responseTimeout(Duration.ofMillis(timeout))
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, TIMEOUT)
+                .responseTimeout(Duration.ofMillis(TIMEOUT))
                 .doOnConnected(conn ->
-                        conn.addHandlerLast(new ReadTimeoutHandler(timeout, TimeUnit.MILLISECONDS))
-                                .addHandlerLast(new WriteTimeoutHandler(timeout, TimeUnit.MILLISECONDS)));
+                        conn.addHandlerLast(new ReadTimeoutHandler(TIMEOUT, TimeUnit.MILLISECONDS))
+                                .addHandlerLast(new WriteTimeoutHandler(TIMEOUT, TimeUnit.MILLISECONDS)));
         return WebClient.builder()
-                .baseUrl(url)
+                .baseUrl(serverUrl)
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .build();
     }
