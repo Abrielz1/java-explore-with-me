@@ -1,11 +1,15 @@
 package ru.practicum.ewm.categories.controller;
 
-import ru.practicum.ewm.categories.service.CategoryService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.validation.annotation.Validated;
+import ru.practicum.ewm.categories.service.CategoryService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.data.domain.PageRequest;
 import ru.practicum.ewm.categories.dto.CategoryDto;
 import javax.validation.constraints.PositiveOrZero;
-import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import java.util.List;

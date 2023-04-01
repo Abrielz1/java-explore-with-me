@@ -7,8 +7,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import lombok.extern.slf4j.Slf4j;
 
-@RestControllerAdvice
 @Slf4j
+@RestControllerAdvice
 public class ErrorHandler {
 
     @ExceptionHandler

@@ -1,9 +1,13 @@
 package ru.practicum.ewm.model;
 
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
-import javax.persistence.*;
+import javax.persistence.Id;
 import lombok.Setter;
 import lombok.Getter;
 

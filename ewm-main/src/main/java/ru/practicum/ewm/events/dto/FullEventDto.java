@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import ru.practicum.ewm.user.dto.UserShortDto;
 
 @Getter
 @Setter
@@ -28,7 +29,7 @@ public class FullEventDto {
 
     private String eventDate;
 
-    private UserDto.UserShortDto initiator;
+    private UserShortDto initiator;
 
     private Location location;
 

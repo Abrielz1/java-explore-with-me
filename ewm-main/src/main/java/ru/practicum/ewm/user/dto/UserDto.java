@@ -24,17 +24,4 @@ public class UserDto {
     @NotBlank
     private String name;
 
-    @Getter
-    @Setter
-    public static class UserShortDto {
-
-        private Long id;
-
-        private String name;
-
-        public UserShortDto(Long id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package ru.practicum.ewm.events.dto;
 
+import static ru.practicum.ewm.pub.PublicConstant.patternConst;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.PositiveOrZero;
 import ru.practicum.ewm.location.model.Location;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Getter
 @Setter
@@ -31,7 +33,7 @@ public class CreateEventDto {
     private String description;
 
     @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = patternConst)
     private LocalDateTime eventDate;
 
     @NotNull

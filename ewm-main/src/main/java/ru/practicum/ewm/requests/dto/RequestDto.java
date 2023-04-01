@@ -1,5 +1,6 @@
 package ru.practicum.ewm.requests.dto;
 
+import static ru.practicum.ewm.pub.PublicConstant.patternConst;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ public class RequestDto {
 
     private Long id;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = patternConst, shape = JsonFormat.Shape.STRING)
     private LocalDateTime created;
 
     private Long event;

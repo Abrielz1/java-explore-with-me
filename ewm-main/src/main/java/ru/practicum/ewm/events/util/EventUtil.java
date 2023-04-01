@@ -2,14 +2,18 @@ package ru.practicum.ewm.events.util;
 
 import ru.practicum.ewm.requests.repository.RequestsRepository;
 import ru.practicum.ewm.requests.model.ParticipationRequest;
+import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
 import com.fasterxml.jackson.core.type.TypeReference;
+import ru.practicum.ewm.events.dto.UserActionState;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.practicum.ewm.events.dto.ShortEventDto;
+import ru.practicum.ewm.events.dto.FullEventDto;
 import java.time.format.DateTimeParseException;
+import ru.practicum.ewm.events.dto.EventState;
 import ru.practicum.ewm.statistic.StatService;
 import ru.practicum.ewm.events.model.Event;
 import java.time.format.DateTimeFormatter;
 import ru.practicum.ewm.dto.ViewStatsDto;
-import ru.practicum.ewm.events.dto.*;
 import java.util.stream.Collectors;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -26,11 +30,9 @@ public class EventUtil {
         Map<String, FullEventDto> views = eventDtos.stream()
                 .collect(Collectors.toMap(fullEventDto -> "/events/" + fullEventDto.getId(),
                         fullEventDto -> fullEventDto));
-        Object responseBody = statService.getViewStats(toString(MIN_TIME),
-                        toString(MAX_TIME),
-                        new ArrayList<>(views.keySet()),
-                        false)
-                .getBody();
+
+        Object responseBody = getObject(statService, views);
+
         List<ViewStatsDto> viewStatsDtos = new ObjectMapper().convertValue(responseBody, new TypeReference<>() {
         });
         viewStatsDtos.forEach(viewStatsDto -> {
@@ -45,11 +47,9 @@ public class EventUtil {
         Map<String, ShortEventDto> views = eventDtos.stream()
                 .collect(Collectors.toMap(fullEventDto -> "/events/" + fullEventDto.getId(),
                         fullEventDto -> fullEventDto));
-        Object responseBody = statService.getViewStats(toString(MIN_TIME),
-                        toString(MAX_TIME),
-                        new ArrayList<>(views.keySet()),
-                        false)
-                .getBody();
+
+        Object responseBody = getObjectShort(statService, views);
+
         List<ViewStatsDto> viewStatsDtos = new ObjectMapper().convertValue(responseBody, new TypeReference<>() {
         });
         viewStatsDtos.forEach(viewStatsDto -> {
@@ -122,5 +122,23 @@ public class EventUtil {
 
     public static LocalDateTime toTime(String timeString) throws DateTimeParseException {
         return LocalDateTime.parse(timeString, FORMATTER);
+    }
+
+    private static Object getObject(StatService statService, Map<String, FullEventDto> views) {
+        Object responseBody = statService.getViewStats(toString(MIN_TIME),
+                        toString(MAX_TIME),
+                        new ArrayList<>(views.keySet()),
+                        false)
+                .getBody();
+        return responseBody;
+    }
+
+    private static Object getObjectShort(StatService statService, Map<String, ShortEventDto> views) {
+        Object responseBody = statService.getViewStats(toString(MIN_TIME),
+                        toString(MAX_TIME),
+                        new ArrayList<>(views.keySet()),
+                        false)
+                .getBody();
+        return responseBody;
     }
 }
