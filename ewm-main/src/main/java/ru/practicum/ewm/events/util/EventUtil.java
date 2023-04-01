@@ -16,7 +16,12 @@ import java.time.format.DateTimeFormatter;
 import ru.practicum.ewm.dto.ViewStatsDto;
 import java.util.stream.Collectors;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.List;
+import java.util.Map;
+
 
 public class EventUtil {
 
