@@ -5,8 +5,8 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.http.ResponseEntity;
-import ru.practicum.ewm.dto.EndpointHitDto;
 import org.springframework.http.HttpStatus;
+import ru.practicum.ewm.dto.EndpointHitDto;
 import org.springframework.http.MediaType;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
@@ -17,6 +17,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class StatsClient {
+
     private final WebClient webClient;
 
     public ResponseEntity<Object> create(EndpointHitDto endpointHitDto) {

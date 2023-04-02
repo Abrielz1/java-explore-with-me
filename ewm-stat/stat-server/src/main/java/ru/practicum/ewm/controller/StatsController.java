@@ -1,8 +1,13 @@
 package ru.practicum.ewm.controller;
 
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 import ru.practicum.ewm.service.StatsService;
 import ru.practicum.ewm.dto.EndpointHitDto;
 import org.springframework.http.HttpStatus;
@@ -13,10 +18,11 @@ import java.time.LocalDateTime;
 import javax.validation.Valid;
 import java.util.List;
 
-@RestController
 @Validated
+@RestController
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class StatsController {
+
     private final StatsService statsService;
 
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -28,10 +34,11 @@ public class StatsController {
     }
 
     @GetMapping("/stats")
-    public List<ViewStatsDto> getStats(@RequestParam(required = false) String start,
-                                       @RequestParam(required = false) String end,
-                                       @RequestParam List<String> uris,
-                                       @RequestParam(defaultValue = "false") Boolean unique) {
+    public List<ViewStatsDto> getStats(
+            @RequestParam String start,
+            @RequestParam String end,
+            @RequestParam(required = false) List<String> uris,
+            @RequestParam(defaultValue = "false") Boolean unique) {
         return statsService.getStats(LocalDateTime.parse(start, FORMATTER),
                 LocalDateTime.parse(end, FORMATTER),
                 uris,

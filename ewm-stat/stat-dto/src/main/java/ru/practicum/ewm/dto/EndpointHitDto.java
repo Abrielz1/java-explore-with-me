@@ -14,15 +14,20 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EndpointHitDto {
+
     private Long id;
+
     @NotNull
     @NotBlank
     private String app;
+
     @NotNull
     @NotBlank
     private String uri;
+
     @NotBlank
     private String ip;
+
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
