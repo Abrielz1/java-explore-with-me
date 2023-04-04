@@ -22,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin/events")
 public class AdminEventController {
+
     private final AdminEventService adminEventService;
 
     @GetMapping

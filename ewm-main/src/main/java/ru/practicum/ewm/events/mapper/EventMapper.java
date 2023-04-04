@@ -12,6 +12,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface EventMapper {
+
     EventMapper EVENT_MAPPER = Mappers.getMapper(EventMapper.class);
 
     @Mapping(target = "id", ignore = true)
@@ -33,4 +34,3 @@ public interface EventMapper {
 
     ShortEventDto toShortFromFull(FullEventDto fullEventDto);
 }
-

@@ -40,3 +40,4 @@ public class AdminCompilationsController {
         return compilationsService.update(compId, newCompilationDto);
     }
 }
+
