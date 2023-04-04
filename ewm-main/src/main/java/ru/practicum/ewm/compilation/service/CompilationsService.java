@@ -1,27 +1,28 @@
 package ru.practicum.ewm.compilation.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
+import ru.practicum.ewm.compilation.repository.CompilationRepository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.compilation.dto.NewCompilationDto;
 import ru.practicum.ewm.compilation.dto.ResponseCompilationDto;
 import ru.practicum.ewm.compilation.mapper.CompilationMapper;
-import ru.practicum.ewm.compilation.model.Compilation;
-import ru.practicum.ewm.compilation.repository.CompilationRepository;
-import ru.practicum.ewm.events.model.Event;
 import ru.practicum.ewm.events.repository.EventRepository;
-
-import java.util.List;
+import ru.practicum.ewm.compilation.dto.NewCompilationDto;
+import ru.practicum.ewm.compilation.model.Compilation;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import ru.practicum.ewm.events.model.Event;
+import lombok.RequiredArgsConstructor;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 @Service
 @Slf4j
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class CompilationsService {
+
     private final CompilationRepository compilationRepository;
+
     private final EventRepository eventRepository;
 
     @Transactional

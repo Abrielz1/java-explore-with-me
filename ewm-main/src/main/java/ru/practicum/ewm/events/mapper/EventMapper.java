@@ -1,14 +1,14 @@
 package ru.practicum.ewm.events.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 import ru.practicum.ewm.categories.model.Category;
 import ru.practicum.ewm.events.dto.CreateEventDto;
-import ru.practicum.ewm.events.dto.FullEventDto;
 import ru.practicum.ewm.events.dto.ShortEventDto;
+import ru.practicum.ewm.events.dto.FullEventDto;
 import ru.practicum.ewm.events.model.Event;
 import ru.practicum.ewm.user.model.User;
+import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mapper;
 
 @Mapper
 public interface EventMapper {

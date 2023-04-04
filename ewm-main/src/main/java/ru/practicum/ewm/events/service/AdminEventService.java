@@ -1,41 +1,50 @@
 package ru.practicum.ewm.events.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.categories.model.Category;
-import ru.practicum.ewm.categories.repository.CategoryRepository;
-import ru.practicum.ewm.events.dto.AdminStateAction;
-import ru.practicum.ewm.events.dto.EventState;
-import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
-import ru.practicum.ewm.events.dto.FullEventDto;
-import ru.practicum.ewm.events.mapper.EventMapper;
-import ru.practicum.ewm.events.model.Event;
 import ru.practicum.ewm.events.repository.CriteriaEventRepository;
-import ru.practicum.ewm.events.repository.EventRepository;
-import ru.practicum.ewm.events.util.EventUtil;
-import ru.practicum.ewm.exception.ConflictException;
-import ru.practicum.ewm.exception.ObjectNotFoundException;
+import ru.practicum.ewm.categories.repository.CategoryRepository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.location.repository.LocationRepository;
 import ru.practicum.ewm.requests.repository.RequestsRepository;
+import ru.practicum.ewm.rating.repository.RatingRepository;
+import ru.practicum.ewm.events.repository.EventRepository;
+import ru.practicum.ewm.exception.ObjectNotFoundException;
+import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
+import ru.practicum.ewm.exception.ConflictException;
+import ru.practicum.ewm.events.dto.AdminStateAction;
+import ru.practicum.ewm.categories.model.Category;
+import ru.practicum.ewm.events.mapper.EventMapper;
+import ru.practicum.ewm.events.dto.FullEventDto;
+import org.springframework.stereotype.Service;
+import ru.practicum.ewm.events.util.EventUtil;
+import ru.practicum.ewm.events.dto.EventState;
 import ru.practicum.ewm.statistic.StatService;
-
-import java.time.LocalDateTime;
+import ru.practicum.ewm.events.model.Event;
 import java.time.format.DateTimeFormatter;
+import lombok.RequiredArgsConstructor;
+import java.util.stream.Collectors;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class AdminEventService {
+
     private final CriteriaEventRepository criteriaEventRepository;
+
     private final EventRepository eventRepository;
+
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     private final CategoryRepository categoryRepository;
+
     private final LocationRepository locationRepository;
+
     private final RequestsRepository requestsRepository;
+
+    private final RatingRepository ratingRepository;
+
     private final StatService statService;
 
     public List<FullEventDto> findEvents(List<Long> users, List<EventState> states, List<Long> categories,
@@ -45,6 +54,7 @@ public class AdminEventService {
                 .map(EventMapper.EVENT_MAPPER::toFullEventDto)
                 .collect(Collectors.toList());
         EventUtil.getConfirmedRequests(fullEventDtoList, requestsRepository);
+        EventUtil.getRatingToFullEvents(fullEventDtoList, ratingRepository);
         return EventUtil.getViews(fullEventDtoList, statService);
     }
 
@@ -95,6 +105,7 @@ public class AdminEventService {
         eventRepository.save(event);
         FullEventDto fullEventDto = EventMapper.EVENT_MAPPER.toFullEventDto(event);
         EventUtil.getConfirmedRequests(Collections.singletonList(fullEventDto), requestsRepository);
+        EventUtil.getRatingToFullEvents(Collections.singletonList(fullEventDto), ratingRepository);
         return EventUtil.getViews(Collections.singletonList(fullEventDto), statService).get(0);
     }
 }
