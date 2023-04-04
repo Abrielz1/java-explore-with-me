@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface UserMapper {
+
     UserMapper USER_MAPPER = Mappers.getMapper(UserMapper.class);
 
     UserDto toUserDto(User user);

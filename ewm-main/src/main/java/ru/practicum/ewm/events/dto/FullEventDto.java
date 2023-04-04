@@ -2,7 +2,7 @@ package ru.practicum.ewm.events.dto;
 
 import ru.practicum.ewm.categories.dto.CategoryDto;
 import ru.practicum.ewm.location.model.Location;
-import ru.practicum.ewm.user.dto.UserShortDto;
+import ru.practicum.ewm.user.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FullEventDto {
-
     private Long id;
 
     private String annotation;
@@ -28,7 +27,7 @@ public class FullEventDto {
 
     private String eventDate;
 
-    private UserShortDto initiator;
+    private UserDto.UserShortDto initiator;
 
     private Location location;
 
@@ -45,4 +44,6 @@ public class FullEventDto {
     private String title;
 
     private Long views;
+
+    private Long rating;
 }

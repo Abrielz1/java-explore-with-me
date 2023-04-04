@@ -5,8 +5,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Value;
 import io.netty.handler.timeout.WriteTimeoutHandler;
-import org.springframework.context.annotation.Bean;
 import io.netty.handler.timeout.ReadTimeoutHandler;
+import org.springframework.context.annotation.Bean;
 import reactor.netty.http.client.HttpClient;
 import io.netty.channel.ChannelOption;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +14,7 @@ import java.time.Duration;
 
 @Configuration
 public class WebClientConfig {
+
     private static final int TIMEOUT = 5000;
 
     @Bean

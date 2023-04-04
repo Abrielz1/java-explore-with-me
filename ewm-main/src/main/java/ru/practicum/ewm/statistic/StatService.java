@@ -14,6 +14,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class StatService {
+
     private final StatsClient statsClient;
 
     public ResponseEntity<Object> getViewStats(

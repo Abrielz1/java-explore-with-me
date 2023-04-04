@@ -1,7 +1,7 @@
 package ru.practicum.ewm.location.model;
 
-import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import javax.persistence.Entity;

@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import ru.practicum.ewm.categories.service.CategoryService;
 import ru.practicum.ewm.categories.dto.CategoryDto;
@@ -32,7 +32,7 @@ public class AdminCategoryController {
 
     @PatchMapping("/{catId}")
     public CategoryDto update(@Positive @PathVariable Long catId,
-                         @Valid @RequestBody CategoryDto categoryDto) {
+                              @Valid @RequestBody CategoryDto categoryDto) {
         return categoryService.update(catId, categoryDto);
     }
 

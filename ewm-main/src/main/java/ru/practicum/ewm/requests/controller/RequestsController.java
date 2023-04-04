@@ -22,6 +22,7 @@ import java.util.List;
 @RequestMapping("/users/{userId}/requests")
 @RequiredArgsConstructor
 public class RequestsController {
+
     private final RequestsService requestsService;
 
     @GetMapping
