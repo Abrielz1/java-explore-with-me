@@ -45,4 +45,6 @@ public class FullEventDto {
     private String title;
 
     private Long views;
+
+    private Long rating;
 }

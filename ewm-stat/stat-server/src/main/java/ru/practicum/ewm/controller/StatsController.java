@@ -34,11 +34,10 @@ public class StatsController {
     }
 
     @GetMapping("/stats")
-    public List<ViewStatsDto> getStats(
-            @RequestParam String start,
-            @RequestParam String end,
-            @RequestParam(required = false) List<String> uris,
-            @RequestParam(defaultValue = "false") Boolean unique) {
+    public List<ViewStatsDto> getStats(@RequestParam String start,
+                                       @RequestParam String end,
+                                       @RequestParam(required = false) List<String> uris,
+                                       @RequestParam(defaultValue = "false") Boolean unique) {
         return statsService.getStats(LocalDateTime.parse(start, FORMATTER),
                 LocalDateTime.parse(end, FORMATTER),
                 uris,

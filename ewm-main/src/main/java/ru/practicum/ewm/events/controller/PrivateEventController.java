@@ -29,7 +29,7 @@ public class PrivateEventController {
             @Positive @PathVariable Long userId,
             @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
             @Positive @RequestParam(defaultValue = "10") Integer size) {
-        PageRequest pageable = PageRequest.of(from / size, size);
+    PageRequest pageable = PageRequest.of(from / size, size);
         return privateEventService.getEventsByCreator(userId, pageable);
     }
 
@@ -60,10 +60,9 @@ public class PrivateEventController {
     }
 
     @PatchMapping("/{eventId}/requests")
-    public RequestUpdateDto requestProcessing(
-            @Positive @PathVariable Long userId,
-            @Positive @PathVariable Long eventId,
-            @Valid @RequestBody EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest) {
+    public RequestUpdateDto requestProcessing(@Positive @PathVariable Long userId,
+                                              @Positive @PathVariable Long eventId,
+                                              @Valid @RequestBody EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest) {
         return requestsService.requestProcessing(userId, eventId, eventRequestStatusUpdateRequest);
     }
 }

@@ -30,4 +30,6 @@ public class ShortEventDto {
     private String title;
 
     private Long views;
+
+    private Long rating;
 }

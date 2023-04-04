@@ -22,7 +22,6 @@ public class PublicCompilationsController {
 
     private final CompilationsService compilationsService;
 
-
     @GetMapping
     public List<ResponseCompilationDto> findAll(
             @RequestParam(required = false) Boolean pinned,

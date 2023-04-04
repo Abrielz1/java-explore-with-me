@@ -1,5 +1,7 @@
 package ru.practicum.ewm.events.util;
 
+import ru.practicum.ewm.rating.dto.RatingView;
+import ru.practicum.ewm.rating.repository.RatingRepository;
 import ru.practicum.ewm.requests.repository.RequestsRepository;
 import ru.practicum.ewm.requests.model.ParticipationRequest;
 import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
@@ -119,6 +121,42 @@ public class EventUtil {
         if (eventUpdateRequestDto.getTitle() != null) {
             event.setTitle(eventUpdateRequestDto.getTitle());
         }
+    }
+
+    public static void getRatingToFullEvents(List<FullEventDto> eventDtos, RatingRepository ratingRepository) {
+        List<Long> ids = eventDtos.stream()
+                .map(FullEventDto::getId)
+                .collect(Collectors.toList());
+        List<RatingView> likes = ratingRepository.getLikes(ids);
+        List<RatingView> dislikes = ratingRepository.getDislikes(ids);
+        Map<Long, Long> counter = new HashMap<>();
+        likes.forEach(element -> counter.put(element.getEventId(), element.getTotal()));
+        dislikes.forEach(element -> {
+            if (counter.containsKey(element.getEventId())) {
+                counter.put(element.getEventId(), counter.get(element.getEventId()) - element.getTotal());
+            } else {
+                counter.put(element.getEventId(), -element.getTotal());
+            }
+        });
+        eventDtos.forEach(element -> element.setRating(counter.getOrDefault(element.getId(), 0L)));
+    }
+
+    public static void getRatingToShortEvents(List<ShortEventDto> eventDtos, RatingRepository ratingRepository) {
+        List<Long> ids = eventDtos.stream()
+                .map(ShortEventDto::getId)
+                .collect(Collectors.toList());
+        List<RatingView> likes = ratingRepository.getLikes(ids);
+        List<RatingView> dislikes = ratingRepository.getDislikes(ids);
+        Map<Long, Long> counter = new HashMap<>();
+        likes.forEach(element -> counter.put(element.getEventId(), element.getTotal()));
+        dislikes.forEach(element -> {
+            if (counter.containsKey(element.getEventId())) {
+                counter.put(element.getEventId(), counter.get(element.getEventId()) - element.getTotal());
+            } else {
+                counter.put(element.getEventId(), -element.getTotal());
+            }
+        });
+        eventDtos.forEach(element -> element.setRating(counter.getOrDefault(element.getId(), 0L)));
     }
 
     public static String toString(LocalDateTime localDateTime) {
