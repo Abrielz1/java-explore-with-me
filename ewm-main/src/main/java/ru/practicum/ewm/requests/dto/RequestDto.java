@@ -1,6 +1,5 @@
 package ru.practicum.ewm.requests.dto;
 
-import static ru.practicum.ewm.pub.PublicConstant.patternConst;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,5 @@
 package ru.practicum.ewm.events.dto;
 
-import static ru.practicum.ewm.pub.PublicConstant.patternConst;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.PositiveOrZero;
 import ru.practicum.ewm.location.model.Location;
@@ -38,6 +37,7 @@ public class CreateEventDto {
 
     @NotNull
     private Location location;
+
     private Boolean paid;
 
     @PositiveOrZero
