@@ -11,7 +11,6 @@ import ru.practicum.ewm.categories.model.Category;
 import ru.practicum.ewm.categories.repository.CategoryRepository;
 import ru.practicum.ewm.exception.ConflictException;
 import ru.practicum.ewm.exception.ObjectNotFoundException;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

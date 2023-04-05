@@ -7,6 +7,7 @@ import ru.practicum.ewm.categories.model.Category;
 
 @Mapper
 public interface CategoryMapper {
+
     CategoryMapper CATEGORY_MAPPER = Mappers.getMapper(CategoryMapper.class);
 
     Category toCategory(CategoryDto categoryDto);

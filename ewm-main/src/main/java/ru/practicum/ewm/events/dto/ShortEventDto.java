@@ -12,14 +12,24 @@ import ru.practicum.ewm.user.dto.UserDto;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShortEventDto {
+
     private Long id;
+
     private String annotation;
+
     private CategoryDto category;
+
     private Integer confirmedRequests;
+
     private String eventDate;
+
     private UserDto.UserShortDto initiator;
+
     private Boolean paid;
+
     private String title;
+
     private Long views;
+
     private Long rating;
 }

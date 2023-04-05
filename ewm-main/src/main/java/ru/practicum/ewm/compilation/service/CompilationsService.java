@@ -12,7 +12,6 @@ import ru.practicum.ewm.compilation.model.Compilation;
 import ru.practicum.ewm.compilation.repository.CompilationRepository;
 import ru.practicum.ewm.events.model.Event;
 import ru.practicum.ewm.events.repository.EventRepository;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +20,9 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class CompilationsService {
+
     private final CompilationRepository compilationRepository;
+
     private final EventRepository eventRepository;
 
     @Transactional
