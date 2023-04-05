@@ -43,3 +43,4 @@ public class RequestsController {
         return requestsService.cancelRequest(userId, requestId);
     }
 }
+
