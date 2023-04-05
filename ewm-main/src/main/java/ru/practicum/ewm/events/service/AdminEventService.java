@@ -26,7 +26,6 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -111,7 +110,6 @@ public class AdminEventService {
         EventUtil.getRatingToFullEvents(Collections.singletonList(fullEventDto), ratingRepository);
         FullEventDto dto = EventUtil.getViews(Collections.singletonList(fullEventDto), statService).get(0);
         System.out.println(dto);
-        log.info("LOG DTO", dto);
         return dto;
     }
 }
