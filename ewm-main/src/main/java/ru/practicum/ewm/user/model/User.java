@@ -1,14 +1,11 @@
 package ru.practicum.ewm.user.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import lombok.AllArgsConstructor;
-import javax.persistence.Entity;
-import lombok.NoArgsConstructor;
-import javax.persistence.Table;
-import javax.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -17,12 +14,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "USERS")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     String email;
-
     String name;
 }

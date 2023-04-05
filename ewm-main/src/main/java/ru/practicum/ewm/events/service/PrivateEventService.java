@@ -7,11 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.categories.model.Category;
 import ru.practicum.ewm.categories.repository.CategoryRepository;
-import ru.practicum.ewm.events.dto.CreateEventDto;
-import ru.practicum.ewm.events.dto.EventState;
-import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
-import ru.practicum.ewm.events.dto.FullEventDto;
-import ru.practicum.ewm.events.dto.ShortEventDto;
+import ru.practicum.ewm.events.dto.*;
 import ru.practicum.ewm.events.mapper.EventMapper;
 import ru.practicum.ewm.events.model.Event;
 import ru.practicum.ewm.events.repository.EventRepository;
@@ -29,9 +25,7 @@ import ru.practicum.ewm.user.repository.AdminUserRepository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,19 +33,12 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class PrivateEventService {
-
     private final RequestsRepository requestsRepository;
-
     private final RatingRepository ratingRepository;
-
     private final LocationRepository locationRepository;
-
     private final EventRepository eventRepository;
-
     private final AdminUserRepository adminUserRepository;
-
     private final CategoryRepository categoryRepository;
-
     private final StatService statService;
 
     @Transactional

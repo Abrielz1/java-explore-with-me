@@ -1,17 +1,17 @@
 package ru.practicum.ewm.requests.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.practicum.ewm.requests.model.ParticipationRequest;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.Query;
-import ru.practicum.ewm.requests.dto.RequestStatus;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import java.util.Optional;
+import ru.practicum.ewm.requests.dto.RequestStatus;
+import ru.practicum.ewm.requests.model.ParticipationRequest;
+
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RequestsRepository extends JpaRepository<ParticipationRequest, Long> {
-
     List<ParticipationRequest> findByRequesterId(Long userId);
 
     Optional<ParticipationRequest> findByIdAndRequesterId(Long requestId, Long userId);

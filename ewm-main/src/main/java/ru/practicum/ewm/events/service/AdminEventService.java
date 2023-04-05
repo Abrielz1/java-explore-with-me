@@ -31,21 +31,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class AdminEventService {
-
     private final CriteriaEventRepository criteriaEventRepository;
-
     private final EventRepository eventRepository;
-
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
     private final CategoryRepository categoryRepository;
-
     private final LocationRepository locationRepository;
-
     private final RequestsRepository requestsRepository;
-
     private final RatingRepository ratingRepository;
-
     private final StatService statService;
 
     public List<FullEventDto> findEvents(List<Long> users, List<EventState> states, List<Long> categories,

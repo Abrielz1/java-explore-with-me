@@ -1,12 +1,13 @@
 package ru.practicum.ewm.statistic;
 
-import org.springframework.transaction.annotation.Transactional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import ru.practicum.ewm.dto.EndpointHitDto;
-import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.StatsClient;
-import lombok.extern.slf4j.Slf4j;
+import ru.practicum.ewm.dto.EndpointHitDto;
+
 import java.util.List;
 
 @Slf4j
@@ -14,7 +15,6 @@ import java.util.List;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class StatService {
-
     private final StatsClient statsClient;
 
     public ResponseEntity<Object> getViewStats(

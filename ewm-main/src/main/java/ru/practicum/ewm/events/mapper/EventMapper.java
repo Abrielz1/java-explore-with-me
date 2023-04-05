@@ -12,7 +12,6 @@ import ru.practicum.ewm.user.model.User;
 
 @Mapper
 public interface EventMapper {
-
     EventMapper EVENT_MAPPER = Mappers.getMapper(EventMapper.class);
 
     @Mapping(target = "id", ignore = true)

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.practicum.ewm.events.dto.EventState;
 import ru.practicum.ewm.events.model.Event;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -18,7 +19,6 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class CriteriaEventRepository {
-
     private final EntityManager entityManager;
 
     public List<Event> findEvents(List<Long> users, List<EventState> states, List<Long> categories,
