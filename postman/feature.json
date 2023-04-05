@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "7b8cf932-7032-4178-89b0-c638ad615aa7",
+		"_postman_id": "767d304e-54c5-407a-85a9-fe163e54c302",
 		"name": "Explore with me - Ratings",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "24044627"
+		"_exporter_id": "24040827"
 	},
 	"item": [
 		{
@@ -256,7 +256,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"annotation\":\"good event for good people\",\r\n    \"category\":{{categoryId}},\r\n    \"description\":\"Spending time in our company\",\r\n    \"eventDate\":\"2023-04-04 20:55:29\",\r\n    \"location\":\r\n        {\r\n        \"lat\":-15.261,\r\n        \"lon\":55.114\r\n        },\r\n    \"paid\":\"false\",\r\n    \"participantLimit\":\"559\",\r\n    \"requestModeration\":true,\r\n    \"title\":\"Evening meating\"\r\n}"
+					"raw": "{\r\n    \"annotation\":\"good event for good people\",\r\n    \"category\":{{categoryId}},\r\n    \"description\":\"Spending time in our company\",\r\n    \"eventDate\":\"2023-04-05 20:55:29\",\r\n    \"location\":\r\n        {\r\n        \"lat\":15.261,\r\n        \"lon\":55.114\r\n        },\r\n    \"paid\":\"false\",\r\n    \"participantLimit\":\"559\",\r\n    \"requestModeration\":true,\r\n    \"title\":\"Evening meating\"\r\n}"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/users/:userId/events",
@@ -312,13 +312,19 @@
 					"raw": "{\r\n    \"eventId\": {{eventId}},\r\n    \"ratingState\": \"LIKE\"\r\n}"
 				},
 				"url": {
-					"raw": "{{baseUrl}}/rating/:userId",
+					"raw": "{{baseUrl}}/rating/:userId?=",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"rating",
 						":userId"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": ""
+						}
 					],
 					"variable": [
 						{
