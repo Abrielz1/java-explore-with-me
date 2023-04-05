@@ -1,16 +1,19 @@
 package ru.practicum.ewm.events.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.events.dto.FullEventDto;
-import ru.practicum.ewm.events.dto.ShortEventDto;
+import org.springframework.web.bind.annotation.GetMapping;
 import ru.practicum.ewm.events.service.PublicEventService;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
+import org.springframework.data.domain.PageRequest;
+import ru.practicum.ewm.events.dto.ShortEventDto;
+import ru.practicum.ewm.events.dto.FullEventDto;
+import javax.validation.constraints.Positive;
+import javax.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @Validated
@@ -18,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/events")
 public class PublicEventController {
+
     private final PublicEventService publicEventService;
 
     @GetMapping

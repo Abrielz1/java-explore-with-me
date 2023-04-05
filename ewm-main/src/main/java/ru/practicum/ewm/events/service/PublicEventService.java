@@ -1,39 +1,42 @@
 package ru.practicum.ewm.events.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.events.dto.EventState;
-import ru.practicum.ewm.events.dto.FullEventDto;
-import ru.practicum.ewm.events.dto.ShortEventDto;
-import ru.practicum.ewm.events.mapper.EventMapper;
-import ru.practicum.ewm.events.model.Event;
-import ru.practicum.ewm.events.repository.EventRepository;
-import ru.practicum.ewm.events.util.EventUtil;
-import ru.practicum.ewm.exception.ObjectNotFoundException;
 import ru.practicum.ewm.rating.repository.RatingRepository;
-import ru.practicum.ewm.requests.dto.RequestStatus;
 import ru.practicum.ewm.requests.repository.RequestsRepository;
-import ru.practicum.ewm.statistic.HitMapper;
+import ru.practicum.ewm.exception.ObjectNotFoundException;
+import ru.practicum.ewm.events.repository.EventRepository;
+import ru.practicum.ewm.requests.dto.RequestStatus;
+import ru.practicum.ewm.events.mapper.EventMapper;
+import ru.practicum.ewm.events.dto.ShortEventDto;
+import org.springframework.data.domain.Pageable;
+import ru.practicum.ewm.events.dto.FullEventDto;
+import org.springframework.stereotype.Service;
+import ru.practicum.ewm.events.dto.EventState;
 import ru.practicum.ewm.statistic.StatService;
-
+import ru.practicum.ewm.events.util.EventUtil;
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
+import ru.practicum.ewm.statistic.HitMapper;
+import ru.practicum.ewm.events.model.Event;
 import java.time.format.DateTimeFormatter;
+import lombok.RequiredArgsConstructor;
+import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class PublicEventService {
+
     private final EventRepository eventRepository;
+
     private final RequestsRepository requestsRepository;
+
     private final RatingRepository ratingRepository;
+
     private final StatService statService;
 
     public List<ShortEventDto> findEvents(String text, List<Long> categories, Boolean paid, String rangeStart,

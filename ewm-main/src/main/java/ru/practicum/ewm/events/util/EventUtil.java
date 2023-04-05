@@ -1,21 +1,28 @@
 package ru.practicum.ewm.events.util;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.practicum.ewm.dto.ViewStatsDto;
-import ru.practicum.ewm.events.dto.*;
-import ru.practicum.ewm.events.model.Event;
-import ru.practicum.ewm.rating.dto.RatingView;
-import ru.practicum.ewm.rating.repository.RatingRepository;
-import ru.practicum.ewm.requests.model.ParticipationRequest;
 import ru.practicum.ewm.requests.repository.RequestsRepository;
-import ru.practicum.ewm.statistic.StatService;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import ru.practicum.ewm.requests.model.ParticipationRequest;
+import ru.practicum.ewm.rating.repository.RatingRepository;
+import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
+import com.fasterxml.jackson.core.type.TypeReference;
+import ru.practicum.ewm.events.dto.UserActionState;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.practicum.ewm.events.dto.ShortEventDto;
+import ru.practicum.ewm.events.dto.FullEventDto;
 import java.time.format.DateTimeParseException;
-import java.util.*;
+import ru.practicum.ewm.rating.dto.RatingView;
+import ru.practicum.ewm.events.dto.EventState;
+import ru.practicum.ewm.statistic.StatService;
+import ru.practicum.ewm.events.model.Event;
+import java.time.format.DateTimeFormatter;
+import ru.practicum.ewm.dto.ViewStatsDto;
 import java.util.stream.Collectors;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.List;
+import java.util.Map;
 
 public class EventUtil {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

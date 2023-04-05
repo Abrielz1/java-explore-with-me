@@ -1,18 +1,17 @@
 package ru.practicum.ewm.user.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.exception.ObjectNotFoundException;
-import ru.practicum.ewm.user.dto.UserDto;
-import ru.practicum.ewm.user.mapper.UserMapper;
-import ru.practicum.ewm.user.model.User;
 import ru.practicum.ewm.user.repository.AdminUserRepository;
-
-import java.util.List;
+import ru.practicum.ewm.exception.ObjectNotFoundException;
+import org.springframework.data.domain.Pageable;
+import ru.practicum.ewm.user.mapper.UserMapper;
+import org.springframework.stereotype.Service;
+import ru.practicum.ewm.user.dto.UserDto;
+import ru.practicum.ewm.user.model.User;
+import lombok.RequiredArgsConstructor;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 @Service
 @Slf4j

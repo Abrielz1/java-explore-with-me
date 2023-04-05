@@ -1,11 +1,11 @@
 package ru.practicum.ewm.rating.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
-import ru.practicum.ewm.events.model.Event;
 import ru.practicum.ewm.rating.dto.RatingDto;
 import ru.practicum.ewm.rating.model.Rating;
+import ru.practicum.ewm.events.model.Event;
+import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mapper;
 
 @Mapper
 public interface RatingMapper {

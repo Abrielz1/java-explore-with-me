@@ -1,38 +1,40 @@
 package ru.practicum.ewm.requests.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.events.dto.EventRequestStatusUpdateRequest;
-import ru.practicum.ewm.events.dto.EventState;
-import ru.practicum.ewm.events.model.Event;
-import ru.practicum.ewm.events.repository.EventRepository;
-import ru.practicum.ewm.exception.ConflictException;
-import ru.practicum.ewm.exception.ObjectNotFoundException;
-import ru.practicum.ewm.requests.dto.RequestDto;
-import ru.practicum.ewm.requests.dto.RequestStatus;
-import ru.practicum.ewm.requests.dto.RequestUpdateDto;
-import ru.practicum.ewm.requests.mapper.RequestsMapper;
-import ru.practicum.ewm.requests.model.ParticipationRequest;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.requests.repository.RequestsRepository;
-import ru.practicum.ewm.user.model.User;
+import ru.practicum.ewm.requests.model.ParticipationRequest;
 import ru.practicum.ewm.user.repository.AdminUserRepository;
-
+import ru.practicum.ewm.events.repository.EventRepository;
+import ru.practicum.ewm.exception.ObjectNotFoundException;
+import ru.practicum.ewm.requests.mapper.RequestsMapper;
+import ru.practicum.ewm.requests.dto.RequestUpdateDto;
+import ru.practicum.ewm.exception.ConflictException;
+import ru.practicum.ewm.requests.dto.RequestStatus;
+import ru.practicum.ewm.requests.dto.RequestDto;
+import ru.practicum.ewm.events.dto.EventState;
+import org.springframework.stereotype.Service;
+import ru.practicum.ewm.events.model.Event;
+import ru.practicum.ewm.user.model.User;
+import lombok.RequiredArgsConstructor;
+import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.Objects;
+import java.util.List;
 
 @Slf4j
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class RequestsService {
+
     private final EventRepository eventRepository;
+
     private final AdminUserRepository userRepository;
+
     private final RequestsRepository requestsRepository;
 
     public List<RequestDto> findByRequestorId(Long userId) {
