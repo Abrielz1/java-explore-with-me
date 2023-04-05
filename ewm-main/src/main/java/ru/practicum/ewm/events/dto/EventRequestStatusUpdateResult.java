@@ -1,11 +1,12 @@
 package ru.practicum.ewm.events.dto;
 
-import ru.practicum.ewm.requests.dto.RequestDto;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import java.util.List;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.practicum.ewm.requests.dto.RequestDto;
+
+import java.util.List;
 
 @Getter
 @Setter

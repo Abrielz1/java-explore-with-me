@@ -25,6 +25,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "requests")
 public class ParticipationRequest {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -12,9 +12,9 @@ import io.netty.channel.ChannelOption;
 import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 
+
 @Configuration
 public class WebClientConfig {
-
     private static final int TIMEOUT = 5000;
 
     @Bean

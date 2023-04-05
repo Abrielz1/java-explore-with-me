@@ -1,10 +1,10 @@
 package ru.practicum.ewm.events.dto;
 
-import ru.practicum.ewm.location.model.Location;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.practicum.ewm.location.model.Location;
 
 @Getter
 @Setter

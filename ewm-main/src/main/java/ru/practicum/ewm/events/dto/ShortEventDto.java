@@ -1,11 +1,11 @@
 package ru.practicum.ewm.events.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ru.practicum.ewm.categories.dto.CategoryDto;
 import ru.practicum.ewm.user.dto.UserDto;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Setter

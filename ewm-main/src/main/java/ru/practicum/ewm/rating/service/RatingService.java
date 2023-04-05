@@ -42,4 +42,3 @@ public class RatingService {
         ratingRepository.deleteById(ratingId);
     }
 }
-

@@ -20,4 +20,3 @@ public interface RatingMapper {
     @Mapping(target = "eventId", source = "event.id")
     RatingDto toRatingDto(Rating rating);
 }
-

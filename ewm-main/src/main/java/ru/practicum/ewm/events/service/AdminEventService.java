@@ -1,30 +1,31 @@
 package ru.practicum.ewm.events.service;
 
-import ru.practicum.ewm.events.repository.CriteriaEventRepository;
-import ru.practicum.ewm.categories.repository.CategoryRepository;
-import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.location.repository.LocationRepository;
-import ru.practicum.ewm.requests.repository.RequestsRepository;
-import ru.practicum.ewm.rating.repository.RatingRepository;
-import ru.practicum.ewm.events.repository.EventRepository;
-import ru.practicum.ewm.exception.ObjectNotFoundException;
-import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
-import ru.practicum.ewm.exception.ConflictException;
-import ru.practicum.ewm.events.dto.AdminStateAction;
-import ru.practicum.ewm.categories.model.Category;
-import ru.practicum.ewm.events.mapper.EventMapper;
-import ru.practicum.ewm.events.dto.FullEventDto;
-import org.springframework.stereotype.Service;
-import ru.practicum.ewm.events.util.EventUtil;
-import ru.practicum.ewm.events.dto.EventState;
-import ru.practicum.ewm.statistic.StatService;
-import ru.practicum.ewm.events.model.Event;
-import java.time.format.DateTimeFormatter;
 import lombok.RequiredArgsConstructor;
-import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ru.practicum.ewm.categories.model.Category;
+import ru.practicum.ewm.categories.repository.CategoryRepository;
+import ru.practicum.ewm.events.dto.AdminStateAction;
+import ru.practicum.ewm.events.dto.EventState;
+import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
+import ru.practicum.ewm.events.dto.FullEventDto;
+import ru.practicum.ewm.events.mapper.EventMapper;
+import ru.practicum.ewm.events.model.Event;
+import ru.practicum.ewm.events.repository.CriteriaEventRepository;
+import ru.practicum.ewm.events.repository.EventRepository;
+import ru.practicum.ewm.events.util.EventUtil;
+import ru.practicum.ewm.exception.ConflictException;
+import ru.practicum.ewm.exception.ObjectNotFoundException;
+import ru.practicum.ewm.location.repository.LocationRepository;
+import ru.practicum.ewm.rating.repository.RatingRepository;
+import ru.practicum.ewm.requests.repository.RequestsRepository;
+import ru.practicum.ewm.statistic.StatService;
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

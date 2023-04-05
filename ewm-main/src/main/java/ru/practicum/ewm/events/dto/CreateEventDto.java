@@ -1,16 +1,16 @@
 package ru.practicum.ewm.events.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import javax.validation.constraints.PositiveOrZero;
-import ru.practicum.ewm.location.model.Location;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.practicum.ewm.location.model.Location;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -36,12 +36,10 @@ public class CreateEventDto {
 
     @NotNull
     private Location location;
-
     private Boolean paid;
 
     @PositiveOrZero
     private Integer participantLimit;
-
     private Boolean requestModeration;
 
     @NotNull

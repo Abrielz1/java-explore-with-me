@@ -1,33 +1,35 @@
 package ru.practicum.ewm.events.util;
 
-import ru.practicum.ewm.requests.repository.RequestsRepository;
-import ru.practicum.ewm.requests.model.ParticipationRequest;
-import ru.practicum.ewm.rating.repository.RatingRepository;
-import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.practicum.ewm.events.dto.UserActionState;
-import ru.practicum.ewm.events.dto.ShortEventDto;
-import ru.practicum.ewm.events.dto.FullEventDto;
-import java.time.format.DateTimeParseException;
-import ru.practicum.ewm.events.dto.EventState;
-import ru.practicum.ewm.rating.dto.RatingView;
-import ru.practicum.ewm.statistic.StatService;
-import ru.practicum.ewm.events.model.Event;
-import java.time.format.DateTimeFormatter;
 import ru.practicum.ewm.dto.ViewStatsDto;
-import java.util.stream.Collectors;
+import ru.practicum.ewm.events.dto.EventState;
+import ru.practicum.ewm.events.dto.EventUpdateRequestDto;
+import ru.practicum.ewm.events.dto.FullEventDto;
+import ru.practicum.ewm.events.dto.ShortEventDto;
+import ru.practicum.ewm.events.dto.UserActionState;
+import ru.practicum.ewm.events.model.Event;
+import ru.practicum.ewm.rating.dto.RatingView;
+import ru.practicum.ewm.rating.repository.RatingRepository;
+import ru.practicum.ewm.requests.model.ParticipationRequest;
+import ru.practicum.ewm.requests.repository.RequestsRepository;
+import ru.practicum.ewm.statistic.StatService;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class EventUtil {
 
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     public static final LocalDateTime MAX_TIME = toTime("5000-01-01 00:00:00");
+
     public static final LocalDateTime MIN_TIME = toTime("2000-01-01 00:00:00");
 
     public static List<FullEventDto> getViews(List<FullEventDto> eventDtos, StatService statService) {

@@ -37,4 +37,3 @@ public class RatingController {
         ratingService.delete(userId, ratingId);
     }
 }
-
