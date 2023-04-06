@@ -8,6 +8,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface RequestsMapper {
+
     RequestsMapper REQUESTS_MAPPER = Mappers.getMapper(RequestsMapper.class);
 
     @Mapping(target = "event", source = "event.id")

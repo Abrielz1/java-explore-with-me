@@ -5,11 +5,13 @@ import ru.practicum.ewm.location.model.Location;
 import ru.practicum.ewm.user.dto.UserShortDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class FullEventDto {
@@ -45,4 +47,6 @@ public class FullEventDto {
     private String title;
 
     private Long views;
+
+    private Long rating;
 }

@@ -1,27 +1,26 @@
-package ru.practicum.ewm.user.dto;
+package ru.practicum.ewm.rating.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+@NoArgsConstructor
+public class RatingDto {
 
     private Long id;
 
+    private Long userId;
+
     @NotNull
-    @Email
-    private String email;
+    private Long eventId;
 
     @NotNull
     @NotBlank
-    private String name;
+    private String ratingState;
 }

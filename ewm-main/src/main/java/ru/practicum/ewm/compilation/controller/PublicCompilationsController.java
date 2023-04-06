@@ -24,10 +24,9 @@ public class PublicCompilationsController {
 
 
     @GetMapping
-    public List<ResponseCompilationDto> findAll(
-            @RequestParam(required = false) Boolean pinned,
-            @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
-            @Positive @RequestParam(defaultValue = "10") Integer size) {
+    public List<ResponseCompilationDto> findAll(@RequestParam(required = false) Boolean pinned,
+                                                @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
+                                                @Positive @RequestParam(defaultValue = "10") Integer size) {
         PageRequest pageable = PageRequest.of(from / size, size);
         return compilationsService.findAll(pinned, pageable);
     }

@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -38,10 +37,12 @@ public class CreateEventDto {
 
     @NotNull
     private Location location;
+
     private Boolean paid;
 
     @PositiveOrZero
     private Integer participantLimit;
+
     private Boolean requestModeration;
 
     @NotNull

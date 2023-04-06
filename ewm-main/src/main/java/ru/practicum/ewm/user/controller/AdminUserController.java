@@ -25,7 +25,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin/users")
 public class AdminUserController {
-
     private final AdminUserService adminUserService;
 
     @GetMapping

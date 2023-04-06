@@ -26,14 +26,13 @@ public class AdminEventController {
     private final AdminEventService adminEventService;
 
     @GetMapping
-    public List<FullEventDto> findEvents(
-             @RequestParam(required = false) List<Long> users,
-             @RequestParam(required = false) List<EventState> states,
-             @RequestParam(required = false) List<Long> categories,
-             @RequestParam(required = false) String rangeStart,
-             @RequestParam(required = false) String rangeEnd,
-             @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
-             @Positive @RequestParam(defaultValue = "10") Integer size) {
+    public List<FullEventDto> findEvents(@RequestParam(required = false) List<Long> users,
+                                         @RequestParam(required = false) List<EventState> states,
+                                         @RequestParam(required = false) List<Long> categories,
+                                         @RequestParam(required = false) String rangeStart,
+                                         @RequestParam(required = false) String rangeEnd,
+                                         @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
+                                         @Positive @RequestParam(defaultValue = "10") Integer size) {
         return adminEventService.findEvents(users, states, categories, rangeStart, rangeEnd, from, size);
     }
 

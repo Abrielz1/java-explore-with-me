@@ -1,10 +1,9 @@
-package ru.practicum.ewm.requests.model;
+package ru.practicum.ewm.rating.model;
 
-import ru.practicum.ewm.requests.dto.RequestStatus;
+import ru.practicum.ewm.rating.dto.RatingState;
 import ru.practicum.ewm.events.model.Event;
-import ru.practicum.ewm.user.model.User;
-import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,35 +11,32 @@ import javax.persistence.EnumType;
 import lombok.AllArgsConstructor;
 import javax.persistence.Entity;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "requests")
-public class ParticipationRequest {
+@Table(name = "event_rating")
+public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    LocalDateTime created;
+    @Column(name = "user_id")
+    private Long userId;
 
     @ManyToOne
     @JoinColumn(name = "event_id")
-    Event event;
-
-    @ManyToOne
-    @JoinColumn(name = "requester_id")
-    User requester;
+    private Event event;
 
     @Enumerated(EnumType.STRING)
-    RequestStatus status;
+    @Column(name = "state")
+    private RatingState ratingState;
 }

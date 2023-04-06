@@ -1,6 +1,7 @@
 package ru.practicum.ewm.events.service;
 
 import org.springframework.transaction.annotation.Transactional;
+import ru.practicum.ewm.rating.repository.RatingRepository;
 import ru.practicum.ewm.requests.repository.RequestsRepository;
 import ru.practicum.ewm.exception.ObjectNotFoundException;
 import ru.practicum.ewm.events.repository.EventRepository;
@@ -33,6 +34,8 @@ public class PublicEventService {
     private final EventRepository eventRepository;
 
     private final RequestsRepository requestsRepository;
+
+    private final RatingRepository ratingRepository;
 
     private final StatService statService;
 
@@ -68,6 +71,7 @@ public class PublicEventService {
             eventsShort.sort((e1, e2) -> e2.getViews().compareTo(e1.getViews()));
         }
         EventUtil.getConfirmedRequests(fullEventDtoList, requestsRepository);
+        EventUtil.getRatingToFullEvents(fullEventDtoList, ratingRepository);
         log.info("Events sent");
         return eventsShort;
     }
@@ -78,6 +82,7 @@ public class PublicEventService {
         });
         FullEventDto fullEventDto = EventMapper.EVENT_MAPPER.toFullEventDto(event);
         fullEventDto.setConfirmedRequests(requestsRepository.findAllByEventIdAndStatus(event.getId(), RequestStatus.CONFIRMED).size());
+        EventUtil.getRatingToFullEvents(Collections.singletonList(fullEventDto), ratingRepository);
         statService.createView(HitMapper.toEndpointHit("ewm-main-service", request));
         log.info("Event sent");
         return EventUtil.getViews(Collections.singletonList(fullEventDto), statService).get(0);

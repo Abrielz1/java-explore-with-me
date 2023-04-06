@@ -18,7 +18,6 @@ import java.util.List;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class AdminUserService {
-
     private final AdminUserRepository adminUserRepository;
 
     public List<UserDto> findAll(List<Long> ids, Pageable page) {

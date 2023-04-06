@@ -9,6 +9,7 @@ import ru.practicum.ewm.events.model.Event;
 import java.util.stream.Collectors;
 import java.util.List;
 
+
 public class CompilationMapper {
 
     public static Compilation toCompilation(NewCompilationDto newCompilationDto, List<Event> events) {
