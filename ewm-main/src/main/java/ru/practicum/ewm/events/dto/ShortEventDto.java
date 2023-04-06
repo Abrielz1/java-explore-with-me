@@ -1,7 +1,7 @@
 package ru.practicum.ewm.events.dto;
 
 import ru.practicum.ewm.categories.dto.CategoryDto;
-import ru.practicum.ewm.user.dto.UserDto;
+import ru.practicum.ewm.user.dto.UserShortDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -25,7 +25,7 @@ public class ShortEventDto {
 
     private String eventDate;
 
-    private UserDto.UserShortDto initiator;
+    private UserShortDto initiator;
 
     private Boolean paid;
 

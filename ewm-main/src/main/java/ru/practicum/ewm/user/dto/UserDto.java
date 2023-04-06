@@ -14,23 +14,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
+
     private Long id;
+
     @NotNull
     @Email
     private String email;
+
     @NotNull
     @NotBlank
     private String name;
-
-    @Getter
-    @Setter
-    public static class UserShortDto {
-        private Long id;
-        private String name;
-
-        public UserShortDto(Long id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-    }
 }
